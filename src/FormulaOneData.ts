@@ -1,3 +1,5 @@
+import { TeamRanking } from "./TeamRanking";
+
 let tracks: string[] = [];
 tracks.push("Bahrain International Circuit");
 tracks.push("Jeddah Corniche Circuit");
@@ -27,17 +29,41 @@ class Team{
     name: string;
     driver1: string;
     driver2: string;
+    ranking: TeamRanking;
     imgLink: string;
 
-    constructor(name: string, driver1: string, driver2: string, imgLink: string){
+    constructor(name: string, driver1: string, driver2: string, ranking: TeamRanking, imgLink: string){
         this.name = name;
         this.driver1 = driver1;
         this.driver2 = driver2;
+        this.ranking = ranking;
         this.imgLink = imgLink;
     }
 }
 
 let teams: Team[] = [];
-teams.push(new Team("Mercedes", "Lewis Hamilton", "George Russell", ""));
+teams.push(new Team("Mercedes", "Lewis Hamilton", "George Russell", TeamRanking.frontrunner, "mercedes.png"));
+teams.push(new Team("Red Bull", "Max Verstappen", "Sergio Perez", TeamRanking.frontrunner, "rbr.png"));
+teams.push(new Team("Ferrari", "Charles Leclerc", "Carlos Sainz", TeamRanking.frontrunner, "ferrari.png"));
+teams.push(new Team("Mclaren", "Lando Norris", "Oscar Piastri", TeamRanking.midfield, "mclaren.png"));
+teams.push(new Team("Aston Martin", "Fernando Alonso", "Lance Stroll", TeamRanking.midfield, "astonmartin.png"));
+teams.push(new Team("Alpine", "Esteban Ocon", "Pierre Gasly", TeamRanking.midfield, "alpine.png"));
+teams.push(new Team("Alpha Tauri", "Yuki Tsunoda", "Nick De Vries", TeamRanking.backmarker, "alphatauri.png"));
+teams.push(new Team("Alpha Romeo", "Valterri Bottas", "Guanyu Zhou", TeamRanking.backmarker, "alpharomeo.png"));
+teams.push(new Team("Haas", "Nico Hulkenburg", "Kevin Magnussen", TeamRanking.midfield, "haas.png"));
+teams.push(new Team("Williams", "Alex Albon", "Logan Saergant", TeamRanking.midfield, "williams.png"));
 
-export default {};
+export function randomTeamAndDriver(teamRanking: TeamRanking = TeamRanking.any){
+    if(teamRanking.valueOf() === TeamRanking.any){
+        const index: number = Math.floor(Math.random() * teams.length);
+        return teams[index];
+    }else{
+        let filteredTeams = teamByRanking(teamRanking);
+        const index: number = Math.floor(Math.random() * filteredTeams.length);
+        return filteredTeams[index];
+    }
+}
+
+function teamByRanking(teamRanking: TeamRanking){
+    return teams.filter((team) => team.ranking.valueOf() === teamRanking.valueOf());
+}

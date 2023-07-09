@@ -1,0 +1,33 @@
+.career-settings{
+    display: flex;
+    flex-direction: column;
+    height : 100vh;
+    width : 100vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 1;
+
+    height : 60%;
+    width : 40%;
+    border : 2px solid black;
+    border-radius: 5px;
+    padding : 0px 20px 10px 20px;
+    margin : 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: 1s;
+    color: #fff;
+    background-color: rgba(255,255,255,0.3);
+    border: 1px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(10px);
+}
+
+.team-logo{
+    height : auto;
+    width : 200px;
+    border-radius: 10px;
+}
