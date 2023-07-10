@@ -2,8 +2,7 @@ import './App.css';
 import { useState } from 'react';
 import { TeamRanking } from './TeamRanking';
 import CareerSettings from './CareerSettings';
-import { randomTeamAndDriver } from './FormulaOneData';
-import { Event } from 'ws';
+import { getTracks, randomTeamAndDriver } from './FormulaOneData';
 
 function App() {
 
@@ -16,13 +15,23 @@ function App() {
     setShowResults(true);
   }
 
+  function selectTracks(){
+    let tracks = [...getTracks()];
+    for(let i = 0; i < 23 - races; i++){
+      let index: number = Math.floor(Math.random() * tracks.length);
+      tracks.splice(index, 1);
+    }
+    return tracks;
+  }
+
   let content;
   if(showResults){
     let randomTeam = randomTeamAndDriver(teamRank);
     //70/30 chance favoring the first driver
     let driverChoice: number = Math.floor(Math.random() * 10) + 1;
+    let tracks = selectTracks();
 
-    content = <CareerSettings team={randomTeam} teammate={driverChoice <= 7 ? randomTeam.driver1 : randomTeam.driver2}/>;
+    content = <CareerSettings tracks={tracks} team={randomTeam} teammate={driverChoice <= 7 ? randomTeam.driver1 : randomTeam.driver2}/>;
   }else{
     content =
     <form onSubmit={(e) => settings(e)} className="form">

@@ -8,6 +8,9 @@ tracks.push("Baku City Circuit");
 tracks.push("Miami International Autodrome");
 tracks.push("Imola");
 tracks.push("Monaco");
+tracks.push("Circuit Paul Ricard");
+tracks.push("Shanghai International Circuit");
+tracks.push("Algarve International Circuit");
 tracks.push("Circuit de Barcelona-Catalunya");
 tracks.push("Circuit Gilles Villenueve");
 tracks.push("Hungaroring");
@@ -21,9 +24,10 @@ tracks.push(" Autódromo Hermanos Rodríguez");
 tracks.push("Interlagos");
 tracks.push("Las Vegas Strip Street Circuit");
 tracks.push("Yas Marina Circuit");
-tracks.push("Circuit Paul Ricard");
-tracks.push("Shanghai International Circuit");
-tracks.push("Algarve International Circuit");
+
+export function getTracks(){
+    return tracks;
+}
 
 class Team{
     name: string;
