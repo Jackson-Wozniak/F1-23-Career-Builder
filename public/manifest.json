@@ -1,0 +1,8 @@
+{
+  "short_name": "F1 23 Career Builder",
+  "name": "choose settings for f1 23 driver career",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
